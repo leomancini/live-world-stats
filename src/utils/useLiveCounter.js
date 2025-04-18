@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
  * @param {number} value1 - Value at the first timestamp
  * @param {number} timestamp2 - Second timestamp (epoch time in seconds)
  * @param {number} value2 - Value at the second timestamp
- * @param {function} formatFn - Optional formatting function for the displayed value
+ * @param {function} formatFn - Formatting function for the displayed value
  * @returns {[string, function]} - Returns the formatted value and a function to stop the counter
  */
 export function useLiveCounter(
@@ -15,7 +15,7 @@ export function useLiveCounter(
   value1,
   timestamp2,
   value2,
-  formatFn
+  formatFn = (value) => Math.round(value).toLocaleString()
 ) {
   const [displayValue, setDisplayValue] = useState("");
   const timeoutRef = useRef(null);
@@ -26,12 +26,6 @@ export function useLiveCounter(
   const valueDiff = value2 - value1;
   const valuePerSecond = timeDiff !== 0 ? valueDiff / timeDiff : 0;
 
-  // Default formatting function if none provided
-  const formatter =
-    typeof formatFn === "function"
-      ? formatFn
-      : (value) => Math.round(value).toLocaleString();
-
   useEffect(() => {
     // Initialize current value based on time elapsed since first timestamp
     const currentEpochTime = Math.floor(Date.now() / 1000);
@@ -39,7 +33,7 @@ export function useLiveCounter(
     currentValueRef.current = Math.floor(
       value1 + secondsElapsed * valuePerSecond
     );
-    setDisplayValue(formatter(currentValueRef.current));
+    setDisplayValue(formatFn(currentValueRef.current));
 
     if (valuePerSecond === 0) return;
 
@@ -66,7 +60,7 @@ export function useLiveCounter(
           // Jump ahead if needed
           const newValue = Math.floor(currentVal) + missedIncrements;
           currentValueRef.current = newValue;
-          setDisplayValue(formatter(newValue));
+          setDisplayValue(formatFn(newValue));
           scheduleNextIncrement(newValue);
           return;
         } else {
@@ -77,7 +71,7 @@ export function useLiveCounter(
 
       timeoutRef.current = setTimeout(() => {
         currentValueRef.current = nextValue;
-        setDisplayValue(formatter(nextValue));
+        setDisplayValue(formatFn(nextValue));
         scheduleNextIncrement(nextValue); // Schedule the *next* one
       }, delay);
     };
@@ -91,7 +85,7 @@ export function useLiveCounter(
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [timestamp1, value1, valuePerSecond, formatter]); // Removed timestamp2, value2 as they only determine valuePerSecond
+  }, [timestamp1, value1, valuePerSecond, formatFn]);
 
   const stopCounter = () => {
     if (timeoutRef.current) {

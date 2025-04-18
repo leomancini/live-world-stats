@@ -30,16 +30,17 @@ const CounterContainer = styled.div`
   background-color: #111111;
   border-radius: 1rem;
   padding: 1rem;
-  gap: 1rem;
+  gap: 0.75rem;
   grid-column: ${(props) => (props.$large ? "span 1" : "span 1")};
   grid-row: ${(props) => (props.$large ? "span 1" : "span 1")};
 `;
 
 const Icon = styled.i`
-  font-size: ${(props) => (props.$large ? "3.5rem" : "2.75rem")};
+  font-size: ${(props) => (props.$large ? "2.75rem" : "2rem")};
   color: #666;
   display: block;
   text-align: center;
+  margin-bottom: 0.5rem;
 `;
 
 const CounterLabel = styled.div`
@@ -53,7 +54,7 @@ const CounterLabel = styled.div`
 `;
 
 const CounterValue = styled.span`
-  font-size: ${(props) => (props.$large ? "4rem" : "2.5rem")};
+  font-size: ${(props) => (props.$large ? "3rem" : "2.5rem")};
   font-weight: bold;
   color: #fff;
   letter-spacing: 0.05em;
