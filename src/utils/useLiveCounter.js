@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Custom hook for creating a live counter that updates based on a rate calculated from two timestamp-value samples
+ * Custom hook for creating a live counter that updates based on a rate calculated from two timestamp-value samples, using data sampled from https://www.worldometers.info/
  *
  * @param {number} timestamp1 - First timestamp (epoch time in seconds)
  * @param {number} value1 - Value at the first timestamp
