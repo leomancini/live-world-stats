@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { LiveCounter } from "./components/LiveCounter";
+import {
+  ContinuousCounter,
+  DailyCounter,
+  YearlyCounter
+} from "./components/Counters";
 
 const Page = styled.div`
   display: grid;
@@ -77,12 +81,11 @@ function App() {
         <CounterContainer $large>
           <Icon $large className="fas fa-earth" />
           <CounterValue $large>
-            <LiveCounter
-              timestamp1={1744945110}
-              value1={8217817508}
-              timestamp2={1744945127}
-              value2={8217817547}
+            <ContinuousCounter
+              ratePerSecond={2.6}
               formatFn={(value) => Math.floor(value).toLocaleString()}
+              baselineValue={8218391465}
+              baselineTimestamp={new Date("2025-04-20T22:47:00").getTime()}
             />
           </CounterValue>
           <CounterLabel $large>World Population</CounterLabel>
@@ -90,12 +93,11 @@ function App() {
         <CounterContainer $large>
           <Icon $large className="fas fa-wifi" />
           <CounterValue $large>
-            <LiveCounter
-              timestamp1={1744947692}
-              value1={6617320309}
-              timestamp2={1744947695}
-              value2={6617320362}
+            <ContinuousCounter
+              ratePerSecond={17.7}
               formatFn={(value) => Math.floor(value).toLocaleString()}
+              baselineValue={6621379726}
+              baselineTimestamp={new Date("2025-04-20T22:47:00").getTime()}
             />
           </CounterValue>
           <CounterLabel $large>Internet Users</CounterLabel>
@@ -104,12 +106,11 @@ function App() {
           <CounterContainer>
             <Icon className="fas fa-cake-candles" />
             <CounterValue>
-              <LiveCounter
-                timestamp1={1744947624}
-                value1={357825}
-                timestamp2={1744947630}
-                value2={357849}
+              <DailyCounter
+                ratePerSecond={4.3}
                 formatFn={(value) => Math.floor(value).toLocaleString()}
+                baselineValue={345420}
+                baselineTimestamp={new Date("2025-04-20T22:51:00").getTime()}
               />
             </CounterValue>
             <CounterLabel>Births Today</CounterLabel>
@@ -117,12 +118,11 @@ function App() {
           <CounterContainer>
             <Icon className="fas fa-search" />
             <CounterValue>
-              <LiveCounter
-                timestamp1={1744946325}
-                value1={11682371731}
-                timestamp2={1744946332}
-                value2={11683305182}
+              <DailyCounter
+                ratePerSecond={138378}
                 formatFn={(value) => Math.floor(value).toLocaleString()}
+                baselineValue={11466645502}
+                baselineTimestamp={new Date("2025-04-20T22:51:00").getTime()}
               />
             </CounterValue>
             <CounterLabel>Google Searches Today</CounterLabel>
@@ -130,12 +130,11 @@ function App() {
           <CounterContainer>
             <Icon className="fas fa-envelope" />
             <CounterValue>
-              <LiveCounter
-                timestamp1={1744946305}
-                value1={307608720706}
-                timestamp2={1744946315}
-                value2={307608721001}
+              <DailyCounter
+                ratePerSecond={3667400}
                 formatFn={(value) => Math.floor(value).toLocaleString()}
+                baselineValue={301896423861}
+                baselineTimestamp={new Date("2025-04-20T22:52:00").getTime()}
               />
             </CounterValue>
             <CounterLabel>Emails Sent Today</CounterLabel>
@@ -145,12 +144,11 @@ function App() {
           <CounterContainer>
             <Icon className="fas fa-cloud" />
             <CounterValue>
-              <LiveCounter
-                timestamp1={1744946340}
-                value1={11579290043}
-                timestamp2={1744946350}
-                value2={11579302750}
+              <YearlyCounter
+                ratePerSecond={1271}
                 formatFn={(value) => Math.floor(value).toLocaleString()}
+                baselineValue={11902970505}
+                baselineTimestamp={new Date("2025-04-20T22:48:00").getTime()}
               />
             </CounterValue>
             <CounterLabel>Co2 Emissions This Year (t)</CounterLabel>
@@ -158,12 +156,11 @@ function App() {
           <CounterContainer>
             <Icon className="fas fa-laptop" />
             <CounterValue>
-              <LiveCounter
-                timestamp1={1744946685}
-                value1={66814905}
-                timestamp2={1744946693}
-                value2={66814963}
+              <YearlyCounter
+                ratePerSecond={9.7}
                 formatFn={(value) => Math.floor(value).toLocaleString()}
+                baselineValue={68663542}
+                baselineTimestamp={new Date("2025-04-20T22:50:00").getTime()}
               />
             </CounterValue>
             <CounterLabel>Computers Made This Year</CounterLabel>
@@ -171,12 +168,11 @@ function App() {
           <CounterContainer>
             <Icon className="fas fa-droplet" />
             <CounterValue>
-              <LiveCounter
-                timestamp1={1744945110}
-                value1={1379006001}
-                timestamp2={1744946612}
-                value2={1379007538}
+              <YearlyCounter
+                ratePerSecond={1.7}
                 formatFn={(value) => Math.floor(value).toLocaleString()}
+                baselineValue={1417580884}
+                baselineTimestamp={new Date("2025-04-20T22:50:00").getTime()}
               />
             </CounterValue>
             <CounterLabel>Water Used This Year (Mℓ)</CounterLabel>
