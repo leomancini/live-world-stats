@@ -55,6 +55,11 @@ const CounterLabel = styled.div`
   text-transform: uppercase;
   text-align: center;
   margin-top: 0.25rem;
+
+  &::selection {
+    background-color: #fff;
+    color: #000;
+  }
 `;
 
 const CounterValue = styled.span`
@@ -63,6 +68,8 @@ const CounterValue = styled.span`
   color: #fff;
   letter-spacing: 0.05em;
   text-align: center;
+  user-select: none;
+  cursor: progress;
 `;
 
 function App() {

@@ -52,7 +52,6 @@ export function DailyCounter({
         const midnight = new Date(now);
         midnight.setHours(0, 0, 0, 0);
         const secondsSinceMidnight = (now - midnight) / 1000;
-        const secondsSinceBaseline = (now - baselineDate) / 1000;
 
         // Calculate how much should have accumulated by the baseline time
         const valueAtBaseline =
@@ -106,7 +105,6 @@ export function YearlyCounter({
       if (baselineDate.getFullYear() === now.getFullYear()) {
         const yearStart = new Date(now.getFullYear(), 0, 1);
         const secondsSinceYearStart = (now - yearStart) / 1000;
-        const secondsSinceBaseline = (now - baselineDate) / 1000;
 
         // Calculate how much should have accumulated by the baseline time
         const valueAtBaseline =
