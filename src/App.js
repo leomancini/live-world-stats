@@ -95,7 +95,7 @@ function App() {
               baselineTimestamp={new Date("2025-04-20T22:47:00").getTime()}
             />
           </CounterValue>
-          <CounterLabel $large>World Population</CounterLabel>
+          <CounterLabel $large>Earth Population</CounterLabel>
         </CounterContainer>
         <CounterContainer $large>
           <Icon $large className="fas fa-wifi" />
